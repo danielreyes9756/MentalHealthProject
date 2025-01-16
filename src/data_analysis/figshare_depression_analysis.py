@@ -3,6 +3,7 @@ from dash import dcc
 
 
 def analyze_depression_distribution_by_age_and_gender(df):
+    title = "Depression Distribution by Age Range and Gender"
     fig = px.box(
         df,
         x="Age",
@@ -10,7 +11,7 @@ def analyze_depression_distribution_by_age_and_gender(df):
         labels={'Age': 'Range Age'},
         color="Gender",
         color_discrete_sequence=px.colors.sequential.Viridis,
-        title="Depression Distribution by Age Range and Gender",
+        title=title,
         width=1600,
         height=900,
         category_orders={
@@ -23,11 +24,12 @@ def analyze_depression_distribution_by_age_and_gender(df):
             ]
         }
     )
-
+    fig.write_html(f"../views/{title}.html")
     return dcc.Graph(figure=fig)
 
 
 def analyze_depression_impact_by_trouble_sleep(df):
+    title = "Impact of Trouble Sleeping on Depression"
     response_map = {
         0: "Not at all",
         1: "Several days",
@@ -39,7 +41,7 @@ def analyze_depression_impact_by_trouble_sleep(df):
         df,
         x='Trouble Sleeping',
         y='Depression Value',
-        title="Impact of Trouble Sleeping on Depression",
+        title=title,
         color='Trouble Sleeping',
         color_discrete_sequence=px.colors.sequential.Viridis,
         width=1600,
@@ -53,10 +55,12 @@ def analyze_depression_impact_by_trouble_sleep(df):
             ]
         }
     )
+    fig.write_html(f"../views/{title}.html")
     return dcc.Graph(figure=fig)
 
 
 def analyze_depression_distribution_by_cgpa_range_and_gender(df):
+    title = "Depression Distribution by CGPA Range and Gender"
     fig = px.box(
         df,
         x="Gender",
@@ -66,7 +70,7 @@ def analyze_depression_distribution_by_cgpa_range_and_gender(df):
         color_discrete_sequence=px.colors.sequential.Viridis,
         width=1600,
         height=900,
-        title="Depression Distribution by CGPA Range and Gender",
+        title=title,
         category_orders={
             "CGPA": [
                 "Other",
@@ -78,10 +82,13 @@ def analyze_depression_distribution_by_cgpa_range_and_gender(df):
             ]
         }
     )
+    fig.write_html(f"../views/{title}.html")
     return dcc.Graph(figure=fig)
 
 
 def analyze_relation_between_depression_feeling_tired_age_and_gender(df):
+    title = "Relation between Depression, Feeling Tired, Age and Gender"
+
     response_map = {
         0: "Not at all",
         1: "Several days",
@@ -97,5 +104,6 @@ def analyze_relation_between_depression_feeling_tired_age_and_gender(df):
         color="Depression Value",
         width=1600,
         height=900,
-        title="Relation between Depression, Feeling Tired, Age and Gender")
+        title=title)
+    fig.write_html(f"../views/{title}.html")
     return dcc.Graph(figure=fig)
