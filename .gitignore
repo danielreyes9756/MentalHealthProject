@@ -1,0 +1,31 @@
+# Python bytecode
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# Dash specific
+*.db
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Log files
+*.log
+
+# IDE files
+.idea/
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# PythonAnywhere specific
+*.sqlite3
